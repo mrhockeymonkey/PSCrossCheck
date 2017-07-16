@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>PSCrosscheck</id>
+    <version>__VERSION__</version>
+    <authors>mrhockeymonkey</authors>
+    <owners>mrhockeymonkey</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>PSModule to interface with CrossCheck</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>PSModule Powershell CrossCheck</tags>
+  </metadata>
+</package>

@@ -1,0 +1,4 @@
+{
+	"uri": "http://localhost:5000/crosscheck/api/v1",
+	"contenttype": "application/json"
+}

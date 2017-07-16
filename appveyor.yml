@@ -1,0 +1,23 @@
+
+#Version Format - Major & Minor are specified in the psd1 so we just need the build number
+version: x.y.{build}
+
+#Request a wmf 5 vm
+os: "WMF 5"
+
+#Only run tests on master
+branches:
+  only:
+    - master
+
+#We dont want to use MSBuild
+build: off
+
+#Kick off the CI/CD pipeline
+install: 
+  - ps: Install-PackageProvider -Name NuGet -Force
+  - ps: Install-Module InvokeBuild -Force
+  - ps: Import-Module InvokeBuild
+
+build_script:
+  - ps: Invoke-Build -BuildNumber $Env:APPVEYOR_BUILD_NUMBER -CIEngine AppVeyor
