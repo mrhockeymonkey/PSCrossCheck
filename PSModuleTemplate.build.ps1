@@ -107,9 +107,10 @@ Task Compile {
 	$RootModule = New-Item -Path $ModuleFolder.FullName -Name "$ModuleName.psm1" -ItemType File -Value $ModuleContent
 
 	#Copy module manifest and any other source files
-	Write-Output "Copying other source files..."
-	Get-ChildItem -Path $SourcePath -File | Where-Object {$_.Name -ne $RootModule.Name} | Copy-Item -Destination $ModuleFolder.FullName
-
+	Write-Output "Copying other source files...
+	Get-ChildItem -Path $SourcePath -File | Where-Object {$_.Name -notin $RootModule.Name,"$ModuleName.init.ps1"} | Copy-Item -Destination $ModuleFolder.FullName
+	Get-ChildItem -Path $SourcePath -Directory | Where-Object {$_.Name -notin 'Classes','Public','Private'} | Copy-Item -Destination $ModuleFolder.FullName -Recurse
+	
 	#Update module copied manifest
 	$NewManifestPath = Join-Path -Path $ModuleFolder.FullName -ChildPath "$ModuleName.psd1"
 	Write-Host "Updating Manifest ModuleVersion to $Script:Version"
